@@ -23,7 +23,7 @@ export default function App() {
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     setText(data)
-    console.log('Type: ' + type + '\nData: ' + data)
+    console.log('Type: ' + type + '\nData: ' + text)
   };
 
   // Check permissions and return the screens
@@ -36,12 +36,11 @@ export default function App() {
   if (hasPermission === false) {
     return (
       <View style={styles.container}>
-        <Text style={{ margin: 10 }}>No access to camera</Text>
+        <Text style={{ margin: 10 }}>Sem acesso a câmera</Text>
         <Button title={'Allow Camera'} onPress={() => askForCameraPermission()} />
       </View>)
   }
 
-  // Return the View
   return (
     <View style={styles.container}>
       <View style={styles.barcodebox}>
@@ -51,7 +50,7 @@ export default function App() {
       </View>
       <Text style={styles.maintext}>{text}</Text>
 
-      {scanned && <Button title={'Scan again?'} onPress={() => setScanned(false)} color='tomato' />}
+      {scanned && <Button title={'Scannear novamente?'} onPress={() => setScanned(false)} color='orange' />}
     </View>
   );
 }
@@ -74,6 +73,6 @@ const styles = StyleSheet.create({
     width: 300,
     overflow: 'hidden',
     borderRadius: 30,
-    backgroundColor: 'tomato'
+    backgroundColor: 'orange'
   }
 });
